@@ -16,7 +16,7 @@ def main():
             files = {"file": image.getvalue()}
             # send data and get the result
             # res = requests.post("http://127.0.0.1:8000/clf_image", files=files).json() # для запуска локально
-            res = requests.post("http://51.250.28:8000/clf_image", files=files).json() # для запуска через docker compose
+            res = requests.post("http://51.250.28.38:8000/clf_image", files=files).json() # для запуска через docker compose
             # print results
             st.write(f'Class name: {res["class_name"]}, class index: {res["class_index"]}')
 
@@ -25,7 +25,7 @@ def main():
         if st.button('Определить'):
             text = {'text' : txt}
             # res = requests.post("http://127.0.0.1:8000/clf_text", json=text) # для запуска локально
-            res = requests.post("http://51.250.28:8000/clf_text", json=text)#.json() для запуска через docker compose
+            res = requests.post("http://51.250.28.38:8000/clf_text", json=text)#.json() для запуска через docker compose
             st.write(res.json()['label'])
             st.write(res.json()['probability'])
 
